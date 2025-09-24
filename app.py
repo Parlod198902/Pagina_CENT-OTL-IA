@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
-
+import os
 app = Flask(__name__)
 
 # Configuración SMTP para Gmail (contraseña de aplicación incluida)
