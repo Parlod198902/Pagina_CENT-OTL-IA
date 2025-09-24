@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CENTÉOTL IA</title>
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/icono.ico') }}">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .card-glow {
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.06) inset, 0 20px 40px -20px rgba(0,0,0,0.35);
+    }
+    .fade-up { opacity: 0; transform: translateY(10px); transition: all .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-[#0a3024] text-white font-[Inter] antialiased">
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Branding -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/15 group-hover:bg-white/15 transition">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="h-8 w-8 object-contain">
+          </span>
+          <div class="flex flex-col leading-tight">
+            <span class="text-lg font-bold tracking-tight">CENTÉOTL IA</span>
+            <span class="text-xs text-white/70">La inteligencia que protege tu cultivo</span>
+          </div>
+        </a>
+        <!-- Nav (desktop) -->
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#inicio" class="nav-link text-white/90 hover:text-white transition">Inicio</a>
+          <a href="#quienes" class="nav-link text-white/90 hover:text-white transition">Quiénes somos</a>
+          <a href="#valores" class="nav-link text-white/90 hover:text-white transition">Valores</a>
+          <a href="#vision-mision" class="nav-link text-white/90 hover:text-white transition">Visión y Misión</a>
+          <a href="#contacto" class="nav-link inline-flex items-center gap-2 rounded-full bg-white text-[#0a3024] px-4 py-2 font-semibold hover:bg-white/90 transition">
+            Contáctanos
+          </a>
+        </nav>
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md bg-white/10 hover:bg-white/15 ring-1 ring-white/15 transition" aria-label="Abrir menú">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu panel -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0d382a]/95 backdrop-blur">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 py-4 space-y-2">
+        <a href="#inicio" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">Inicio</a>
+        <a href="#quienes" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">Quiénes somos</a>
+        <a href="#valores" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">Valores</a>
+        <a href="#vision-mision" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">Visión y Misión</a>
+        <a href="#contacto" class="block rounded-md px-3 py-2 bg-white text-[#0a3024] font-semibold">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero -->
+  <section id="inicio" class="relative min-h-[88vh] flex items-center justify-center overflow-hidden scroll-mt-24 mb-16">
+    <div class="absolute inset-0 -z-10">
+      <video id="heroVideo" class="h-full w-full object-cover" autoplay muted playsinline loop poster="{{ url_for('static', filename='img/campo.png') }}">
+        <source src="{{ url_for('static', filename='img/campo.mp4') }}" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0a3024]/80 via-[#0a3024]/40 to-[#0a3024]/70"></div>
+    </div>
+    <div class="relative mx-auto max-w-5xl px-6 text-center space-y-6">
+      <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
+        Trampas inteligentes de captura para el monitoreo y control de plagas
+      </h1>
+      <p class="text-white/90 max-w-3xl mx-auto">
+        Acompañamos a productores con asesoría técnica, innovación y prácticas sostenibles para potenciar cada temporada.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="#quienes" class="rounded-full bg-white text-[#0a3024] px-6 py-3 font-semibold hover:bg-white/90 transition">Conócenos</a>
+        <a href="#contacto" class="rounded-full ring-1 ring-white/25 bg-white/10 hover:bg-white/15 px-6 py-3 font-semibold text-white transition">Escríbenos</a>
+      </div>
+      <div id="videoFallback" class="hidden text-sm text-white/80">
+        El video no se pudo cargar. Se muestra una imagen de respaldo.
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiénes Somos -->
+  <section id="quienes" class="scroll-mt-24 mb-16 mt-16">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="fade-up">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Quiénes somos</h2>
+          <p class="text-white/90">
+            Somos una empresa comprometida con el agro mexicano que desarrolla soluciones tecnológicas de precisión para el monitoreo y control de plagas en cultivos comerciales mediante Internet de las Cosas e Inteligencia Artificial, buscando controlar plagas de manera sostenible, reducir el uso de agroquímicos y empoderar a los agricultores mexicanos aumentando su productividad en el campo.
+          </p>
+        </div>
+        <div class="fade-up flex justify-center items-center mt-6 lg:mt-0">
+          <img src="static/img/campo.png" alt="Cultivo" class="w-full max-w-xs md:max-w-sm lg:max-w-md object-cover rounded-xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="valores" class="scroll-mt-24 py-20 mb-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="fade-up text-center mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3">Nuestros valores</h2>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-8 pb-2">
+
+      <!-- Innovación (SVG foco de siempre) -->
+      <article class="fade-up rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 hover:bg-white/10 transition flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="h-12 w-12 rounded-xl bg-emerald-200/20 flex items-center justify-center mb-4">
+            <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="#34d399" stroke-width="1.6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12v1a2 2 0 002 2h4a2 2 0 002-2v-1A7 7 0 0012 2z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Innovación</h3>
+          <p class="text-white/80">Aplicación de tecnologías emergentes para resolver problemáticas agrícolas críticas.</p>
+        </div>
+      </article>
+
+      <!-- Sostenibilidad (SVG embebido y color ajustado) -->
+      <article class="fade-up rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 hover:bg-white/10 transition flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="h-12 w-12 rounded-xl bg-emerald-200/20 flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="h-8 w-8" stroke="#34d399">
+              <g>
+                <path d="M6.8291 17.0806C13.9002 21.3232 19.557 15.6663 18.8499 5.0598C8.24352 4.35269 2.58692 10.0097 6.8291 17.0806ZM6.8291 17.0806C6.82902 17.0805 6.82918 17.0807 6.8291 17.0806ZM6.8291 17.0806L5 18.909M6.8291 17.0806L10.6569 13.2522" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Sostenibilidad</h3>
+          <p class="text-white/80">Reducción en el uso de agroquímicos y fomento de bioinsumos.</p>
+        </div>
+      </article>
+
+      <!-- Compromiso social (SVG globo terráqueo de siempre) -->
+      <article class="fade-up rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 hover:bg-white/10 transition flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="h-12 w-12 rounded-xl bg-emerald-200/20 flex items-center justify-center mb-4">
+            <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="#34d399" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Compromiso social</h3>
+          <p class="text-white/80">Mejora de la rentabilidad y calidad de vida de los productores.</p>
+        </div>
+      </article>
+
+      <!-- Calidad (SVG embebido y color ajustado) -->
+      <article class="fade-up rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 hover:bg-white/10 transition flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="h-12 w-12 rounded-xl bg-emerald-200/20 flex items-center justify-center mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="h-8 w-8" stroke="#34d399">
+              <g>
+                <path d="M16.0003 9L10.667 15L8 12M3 17.8002V6.2002C3 5.08009 3 4.51962 3.21799 4.0918C3.40973 3.71547 3.71547 3.40973 4.0918 3.21799C4.51962 3 5.08009 3 6.2002 3H17.8002C18.9203 3 19.4796 3 19.9074 3.21799C20.2837 3.40973 20.5905 3.71547 20.7822 4.0918C21 4.5192 21 5.07899 21 6.19691V17.8036C21 18.9215 21 19.4805 20.7822 19.9079C20.5905 20.2842 20.2837 20.5905 19.9074 20.7822C19.48 21 18.921 21 17.8031 21H6.19691C5.07899 21 4.5192 21 4.0918 20.7822C3.71547 20.5905 3.40973 20.2842 3.21799 19.9079C3 19.4801 3 18.9203 3 17.8002Z" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Calidad</h3>
+          <p class="text-white/80">Dispositivos confiables y funcionales en condiciones rurales.</p>
+        </div>
+      </article>
+
+      <!-- Accesibilidad tecnológica (SVG embebido y color ajustado) -->
+      <article class="fade-up rounded-2xl bg-white/5 ring-1 ring-white/10 p-8 hover:bg-white/10 transition flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="h-12 w-12 rounded-xl bg-emerald-200/20 flex items-center justify-center mb-4">
+            <svg viewBox="0 0 512 512" class="h-8 w-8" fill="none">
+              <!-- Ajusta los colores de las partes internas del SVG -->
+              <g>
+                <path d="M290.4,103.5H54.9c-15,0-27.2,12.2-27.2,27.2v145.2h290V130.7C317.6,115.6,305.5,103.5,290.4,103.5z"
+                  style="fill:#34d399;" />
+                <path d="M27.7,304.7c0,15,12.2,27.2,27.2,27.2h94.9v62.7h-26.7c-3.9,0-7,3.1-7,7s3.1,7,7,7h99c3.9,0,7-3.1,7-7
+                  s-3.1-7-7-7h-27.7v-62.7h95.9c15,0,27.2-12.2,27.2-27.2v-14.8h-290V304.7z"
+                  style="fill:#34d399;" />
+                <path d="M471.4,103.4H369.9c-7.1,0-12.9,5.8-12.9,12.9v273.7c0,7.1,5.8,12.9,12.9,12.9h101.6c7.1,0,12.9-5.8,12.9-12.9
+                  V116.3C484.3,109.2,478.5,103.4,471.4,103.4z M383.5,157.6h74.3v41h-74.3V157.6z M420.6,351.4c-11.8,0-21.4-9.6-21.4-21.4
+                  c0-11.8,9.6-21.4,21.4-21.4c11.8,0,21.4,9.6,21.4,21.4C442,341.8,432.5,351.4,420.6,351.4z M457.8,229.2h-74.3c-3.9,0-7-3.1-7-7
+                  s3.1-7,7-7h74.3c3.9,0,7,3.1,7,7S461.7,229.2,457.8,229.2z"
+                  style="fill:#34d399;" />
+              </g>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Accesibilidad tecnológica</h3>
+          <p class="text-white/80">Soluciones fáciles de adoptar incluso en comunidades con baja infraestructura.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+  <!-- Visión y Misión -->
+  <section id="vision-mision" class="scroll-mt-24 mb-16 mt-16">
+    <div class="mx-auto max-w-7xl px-6 pb-6">
+      <div class="fade-up text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">Visión y Misión</h2>
+        <p class="text-white/80 max-w-3xl mx-auto">Propósito claro, resultados concretos.</p>
+      </div>
+      <div class="mt-10 grid lg:grid-cols-2 gap-10">
+        <!-- Visión -->
+        <article class="fade-up card-glow rounded-2xl bg-white p-8 text-[#0a3024] mb-8">
+          <div class="flex items-start gap-4">
+            <div class="h-12 w-12 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700"></div>
+            <div>
+              <h3 class="text-2xl font-bold">Visión</h3>
+              <p class="mt-3 text-[#0a3024]/80">
+                Para 2030, consolidar a Centéotl IA como referente nacional e internacional en tecnologías agropecuarias inteligentes,
+                liderando la digitalización del campo y contribuyendo a un sector agrícola más competitivo, resiliente al cambio
+                climático y comprometido con la seguridad alimentaria.
+              </p>
+            </div>
+          </div>
+        </article>
+        <!-- Misión -->
+        <article class="fade-up card-glow rounded-2xl bg-white p-8 text-[#0a3024] mb-8">
+          <div class="flex items-start gap-4">
+            <div class="h-12 w-12 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700"></div>
+            <div>
+              <h3 class="text-2xl font-bold">Misión</h3>
+              <p class="mt-3 text-[#0a3024]/80">
+                Desarrollar soluciones de agricultura de precisión basadas en inteligencia artificial, IoT y energías renovables, que
+                permitan a los productores detectar y controlar tempranamente al gusano cogollero, aumentando la productividad y
+                reduciendo el impacto ambiental mediante un manejo sostenible de plagas.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contáctanos -->
+  <section id="contacto" class="scroll-mt-24 mb-16 mt-16">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid lg:grid-cols-2 gap-10">
+        <!-- Info -->
+        <div class="fade-up mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Contáctanos</h2>
+          <p class="text-white/85 mb-4">
+            Cuéntanos sobre los problema de sus cultivos. Te responderemos en menos de 24 horas hábiles.
+          </p>
+          <div class="mt-6 space-y-4 text-white/90">
+            <div class="flex items-center gap-3">
+              <span>📍</span> <span>Boulevard Institutos Tecnológicos No. 509 Colonia Buena Vista Norte C.P. 96848 Minatitlán, Veracruz, México</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span>📞</span> <span>+52 1 922 163 4833</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span>✉️</span> <span>oficialcenteotl@gmail.com</span>
+            </div>
+            <div class="pt-2 flex items-center gap-3">
+              <a href="https://wa.me/5219221634833" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-emerald-400 text-[#0a3024] px-4 py-2 font-semibold hover:bg-emerald-300 transition">
+                WhatsApp
+              </a>
+              <a href="https://instagram.com/oficialcenteotl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full ring-1 ring-white/25 bg-white/10 hover:bg-white/15 px-4 py-2 font-semibold">
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Formulario -->
+        <div class="fade-up mb-8">
+          <form id="contactForm" class="card-glow rounded-2xl bg-white p-6 sm:p-8 text-[#0a3024]">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold mb-1">Nombre</label>
+                <input required type="text" name="nombre" class="w-full rounded-lg border border-emerald-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 px-3 py-2 outline-none" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-1">Email</label>
+                <input required type="email" name="email" class="w-full rounded-lg border border-emerald-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 px-3 py-2 outline-none" placeholder="tucorreo@ejemplo.com" />
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="block text-sm font-semibold mb-1">Asunto</label>
+              <input type="text" name="asunto" class="w-full rounded-lg border border-emerald-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 px-3 py-2 outline-none" placeholder="Consulta / Asesoría / Presupuesto" />
+            </div>
+            <div class="mt-4">
+              <label class="block text-sm font-semibold mb-1">Mensaje</label>
+              <textarea required name="mensaje" rows="5" class="w-full rounded-lg border border-emerald-200 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-200 px-3 py-2 outline-none" placeholder="¿En qué podemos ayudarte?"></textarea>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+              <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-3 transition">
+                Enviar mensaje
+                <span aria-hidden="true"></span>
+              </button>
+              <span id="formMsg" class="text-sm font-semibold text-emerald-700 hidden"></span>
+            </div>
+            <p class="mt-3 text-xs text-[#0a3024]/60">
+              Tus datos serán enviados por correo electrónico directamente al equipo de CENTÉOTL IA.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/15 group-hover:bg-white/15 transition">
+          <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="h-8 w-8 object-contain">
+        </span>
+        <div class="text-sm">
+          <div class="font-semibold">CENTÉOTL IA</div>
+          <div class="text-white/70">La inteligencia que protege tu cultivo</div>
+        </div>
+      </div>
+      <div class="text-xs text-white/60">
+        © <span id="year"></span> CENTÉOTL IA. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Utilidades
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const header = $('#site-header');
+    const links = $$('.nav-link');
+    function onScroll() {
+      const scrolled = window.scrollY > 10;
+      header.className = 'fixed top-0 inset-x-0 z-50 transition-all ' + (scrolled ? 'bg-[#0a3024]/85 backdrop-blur ring-1 ring-white/10' : '');
+      const sections = ['inicio','quienes','valores','vision-mision','contacto'].map(id => document.getElementById(id));
+      let current = sections[0].id;
+      const offset = 120;
+      for (const sec of sections) {
+        const top = sec.getBoundingClientRect().top;
+        if (top - offset <= 0) current = sec.id;
+      }
+      links.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + current;
+        a.style.color = isActive ? 'white' : '';
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    const menuBtn = $('#menuBtn');
+    const mobileMenu = $('#mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    $$('.fade-up').forEach(el => observer.observe(el));
+    const video = $('#heroVideo');
+    const fallbackMsg = $('#videoFallback');
+    const toggleBtn = $('#toggleVideoBtn');
+    const toggleIcon = $('#toggleIcon');
+    const toggleText = $('#toggleText');
+    function setVideoState(playing) {
+      toggleIcon.textContent = playing ? '⏸️' : '▶️';
+      toggleText.textContent = playing ? 'Pausar video' : 'Reproducir video';
+      toggleBtn.setAttribute('aria-pressed', playing ? 'false' : 'true');
+    }
+    toggleBtn?.addEventListener('click', () => {
+      if (!video) return;
+      if (video.paused) {
+        video.play().then(() => setVideoState(true)).catch(() => {});
+      } else {
+        video.pause();
+        setVideoState(false);
+      }
+    });
+    if (video) {
+      video.addEventListener('error', () => {
+        if (fallbackMsg) fallbackMsg.classList.remove('hidden');
+      });
+      video.play().then(() => setVideoState(true)).catch(() => setVideoState(false));
+    }
+    // FORMULARIO DE CONTACTO: ENVÍO POR AJAX AL BACKEND FLASK
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form?.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch('/enviar_correo', {
+        method: 'POST',
+        body: data
+      })
+      .then(res => res.json())
+      .then(res => {
+        if(res.success){
+          formMsg.textContent = '¡Gracias! Tu mensaje fue enviado.';
+          formMsg.style.color = '#065f46';
+          formMsg.classList.remove('hidden');
+          form.reset();
+        }else{
+          formMsg.textContent = 'Hubo un problema al enviar el mensaje.';
+          formMsg.style.color = '#b91c1c';
+          formMsg.classList.remove('hidden');
+        }
+      })
+      .catch(() => {
+        formMsg.textContent = 'Hubo un problema al enviar el mensaje.';
+        formMsg.style.color = '#b91c1c';
+        formMsg.classList.remove('hidden');
+      });
+    });
+    const yearSpan = $('#year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
